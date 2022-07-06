@@ -5,8 +5,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "styled-components";
 import * as EmailValidator from "email-validator";
-import Login from "./LoginButton";
-import { useContext, MainContext } from "../context";
+
 const Sidebar = () => {
   const createChat = () => {
     const input = prompt("Enter a name for your chat");

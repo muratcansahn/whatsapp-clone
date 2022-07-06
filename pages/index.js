@@ -4,17 +4,19 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { authentication } from "../firebase";
 import { useState, useEffect } from "react";
 import Router from "next/router";
+import Loading from "../components/Loading";
 
 const index = () => {
   const [isAuth, setIsAuth] = useState(false);
-  const [user] = useAuthState(authentication);
-  const [isLoading, setIsLoading] = useState("");
+  const [user, loading] = useAuthState(authentication);
   useEffect(() => {
     checkAuth();
   }, [user]);
   const checkAuth = async () => {
     (await user) ? setIsAuth(true) : setIsAuth(false);
   };
+  if (loading) return <Loading />;
+
   return <Sidebar />;
 };
 
